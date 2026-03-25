@@ -346,7 +346,9 @@
     <p class="sidebar-tag">Not so serious roleplay. Fun community. Giving you a second chance on your story.</p>
 
     <button class="nav-btn" data-section="home">Home</button>
-    <button class="nav-btn" data-section="community">Community</button>
+    <button class="nav-btn" onclick="goToPage('community.html')">
+  Community
+</button>
     <button class="nav-btn" data-section="departments">Departments</button>
     <button class="nav-btn" data-section="apply">Apply</button>
   </div>
@@ -657,5 +659,10 @@
       alert('DayZ server IP copied!');
     }
   </script>
+	<script>
+function goToPage(page) {
+  window.location.href = page;
+}
+</script>
 </body>
 </html>
