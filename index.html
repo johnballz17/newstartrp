@@ -6,19 +6,19 @@
   <title>New Start RP</title>
   <style>
     :root{
-      --bg:#07110b;
-      --bg-soft:#0d1811;
-      --panel:rgba(10,22,15,0.92);
-      --panel-strong:rgba(8,17,12,0.98);
-      --line:rgba(0,255,136,0.16);
-      --line-strong:rgba(255,59,59,0.22);
-      --green:#00d26a;
-      --green-2:#1eff8f;
-      --red:#d92b2b;
-      --red-2:#ff4a4a;
-      --text:#f3fff7;
-      --muted:#a8c9b2;
-      --shadow:0 18px 40px rgba(0,0,0,0.35);
+      --bg:#0a0f1a;
+      --bg-soft:#111827;
+      --panel:rgba(17,24,39,0.92);
+      --panel-strong:rgba(10,15,26,0.98);
+      --line:rgba(59,130,246,0.18);
+      --line-strong:rgba(148,163,184,0.25);
+      --blue:#3b82f6;
+      --blue-2:#60a5fa;
+      --grey:#9ca3af;
+      --grey-2:#cbd5e1;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --shadow:0 18px 40px rgba(0,0,0,0.5);
       --radius:18px;
       --max:1400px;
     }
@@ -29,48 +29,57 @@
       margin:0;
       font-family:Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(0,210,106,0.10), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(217,43,43,0.10), transparent 30%),
-        linear-gradient(180deg, #050b07 0%, #0a130d 45%, #060b08 100%);
+        radial-gradient(circle at top left, rgba(59,130,246,0.10), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(148,163,184,0.10), transparent 30%),
+        linear-gradient(180deg, #050814 0%, #0a0f1a 50%, #050814 100%);
       color:var(--text);
       min-height:100vh;
     }
 
     a{color:inherit;text-decoration:none}
 
-    .topbar{
-      position:sticky;
+    .sidebar{
+      position:fixed;
+      left:0;
       top:0;
-      z-index:50;
-      backdrop-filter:blur(10px);
-      background:rgba(6,11,8,0.78);
-      border-bottom:1px solid var(--line);
-    }
-
-    .topbar-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      min-height:84px;
-      padding:0 20px;
-      display:grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items:center;
-      gap:16px;
-    }
-
-    .left-buttons{
+      width:220px;
+      height:100vh;
+      background:linear-gradient(180deg, rgba(5,8,20,0.98), rgba(17,24,39,0.98));
+      border-right:1px solid var(--line);
+      padding:22px 16px;
       display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-self:start;
+      flex-direction:column;
+      gap:12px;
+      z-index:100;
+      box-shadow:var(--shadow);
+    }
+
+    .sidebar h2{
+      margin:0 0 18px;
+      text-align:center;
+      font-size:1.35rem;
+      font-weight:900;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--text);
+      text-shadow:0 0 18px rgba(96,165,250,0.18);
+    }
+
+    .sidebar-tag{
+      margin:0 0 10px;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.88rem;
+      line-height:1.5;
     }
 
     .nav-btn{
-      border:1px solid rgba(0,210,106,0.28);
-      background:linear-gradient(180deg, rgba(0,210,106,0.14), rgba(0,210,106,0.05));
+      width:100%;
+      text-align:left;
+      border:1px solid rgba(59,130,246,0.24);
+      background:linear-gradient(180deg, rgba(59,130,246,0.16), rgba(148,163,184,0.06));
       color:var(--text);
-      padding:10px 16px;
+      padding:12px 16px;
       border-radius:12px;
       font-weight:700;
       letter-spacing:.2px;
@@ -81,43 +90,23 @@
 
     .nav-btn:hover{
       transform:translateY(-2px);
-      border-color:rgba(30,255,143,0.58);
-      box-shadow:0 10px 24px rgba(0,210,106,0.12);
+      border-color:rgba(96,165,250,0.55);
+      box-shadow:0 10px 24px rgba(59,130,246,0.16);
     }
 
-    .nav-btn.red{
-      border-color:rgba(255,74,74,0.28);
-      background:linear-gradient(180deg, rgba(255,74,74,0.14), rgba(255,74,74,0.05));
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto 0 240px;
+      padding:28px 20px 50px;
     }
 
-    .nav-btn.red:hover{
-      border-color:rgba(255,74,74,0.6);
-      box-shadow:0 10px 24px rgba(217,43,43,0.14);
-    }
-
-    .brand{
-      justify-self:center;
-      text-align:center;
-    }
-
-    .brand h1{
-      margin:0;
-      font-size:clamp(1.5rem, 3vw, 2.5rem);
-      font-weight:900;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      text-shadow:0 0 20px rgba(0,210,106,0.16);
-    }
-
-    .brand p{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:0.9rem;
-      letter-spacing:.5px;
+    .top-status{
+      display:flex;
+      justify-content:flex-end;
+      margin-bottom:18px;
     }
 
     .status-pill{
-      justify-self:end;
       display:inline-flex;
       align-items:center;
       gap:10px;
@@ -134,19 +123,13 @@
       width:10px;
       height:10px;
       border-radius:999px;
-      background:var(--green-2);
-      box-shadow:0 0 14px rgba(30,255,143,0.7);
-    }
-
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:28px 20px 50px;
+      background:var(--blue-2);
+      box-shadow:0 0 14px rgba(96,165,250,0.7);
     }
 
     .hero{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
+      grid-template-columns:1fr;
       gap:22px;
       align-items:stretch;
       margin-top:18px;
@@ -154,7 +137,7 @@
 
     .hero-card,
     .panel{
-      background:linear-gradient(180deg, rgba(12,25,17,0.94), rgba(8,16,11,0.96));
+      background:linear-gradient(180deg, rgba(17,24,39,0.94), rgba(10,15,26,0.97));
       border:1px solid var(--line);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
@@ -169,7 +152,7 @@
       inset:0;
       pointer-events:none;
       background:
-        linear-gradient(135deg, rgba(0,210,106,0.08), transparent 34%, transparent 66%, rgba(217,43,43,0.08));
+        linear-gradient(135deg, rgba(59,130,246,0.08), transparent 34%, transparent 66%, rgba(148,163,184,0.06));
     }
 
     .hero-content{
@@ -182,7 +165,7 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
-      color:var(--green-2);
+      color:var(--blue-2);
       font-size:0.88rem;
       font-weight:800;
       letter-spacing:1px;
@@ -194,7 +177,7 @@
       content:"";
       width:28px;
       height:2px;
-      background:linear-gradient(90deg, var(--green), transparent);
+      background:linear-gradient(90deg, var(--blue), transparent);
       display:inline-block;
     }
 
@@ -209,7 +192,7 @@
       color:var(--muted);
       font-size:1.02rem;
       line-height:1.7;
-      max-width:760px;
+      max-width:900px;
     }
 
     .hero-actions{
@@ -219,7 +202,17 @@
       flex-wrap:wrap;
     }
 
+    .hero-group-title{
+      margin-top:28px;
+      font-size:1rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      color:var(--grey-2);
+    }
+
     .cta{
+      display:inline-block;
       border:none;
       border-radius:14px;
       padding:14px 18px;
@@ -230,50 +223,19 @@
     }
 
     .cta.primary{
-      background:linear-gradient(135deg, var(--green), #0caf62);
-      color:#041108;
-      box-shadow:0 14px 28px rgba(0,210,106,0.22);
+      background:linear-gradient(135deg, var(--blue), #2563eb);
+      color:#fff;
+      box-shadow:0 14px 28px rgba(59,130,246,0.25);
     }
 
     .cta.secondary{
-      background:linear-gradient(135deg, rgba(255,74,74,0.18), rgba(255,74,74,0.08));
+      background:linear-gradient(135deg, rgba(148,163,184,0.18), rgba(148,163,184,0.08));
       color:var(--text);
-      border:1px solid rgba(255,74,74,0.25);
+      border:1px solid rgba(148,163,184,0.25);
     }
 
-    .cta:hover,
-    .nav-btn:hover{
+    .cta:hover{
       transform:translateY(-2px);
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-      padding:22px;
-      position:relative;
-      z-index:1;
-    }
-
-    .stat-box{
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.05);
-      border-radius:16px;
-      padding:20px;
-    }
-
-    .stat-label{
-      color:var(--muted);
-      font-size:0.88rem;
-      margin-bottom:8px;
-      text-transform:uppercase;
-      letter-spacing:.9px;
-    }
-
-    .stat-value{
-      font-size:2rem;
-      font-weight:900;
-      line-height:1;
     }
 
     .grid{
@@ -332,16 +294,16 @@
       letter-spacing:.6px;
     }
 
-    .tag.green{
-      background:rgba(0,210,106,0.14);
-      color:var(--green-2);
-      border:1px solid rgba(0,210,106,0.2);
+    .tag.blue{
+      background:rgba(59,130,246,0.14);
+      color:var(--blue-2);
+      border:1px solid rgba(59,130,246,0.2);
     }
 
-    .tag.red{
-      background:rgba(255,74,74,0.14);
-      color:#ff8f8f;
-      border:1px solid rgba(255,74,74,0.2);
+    .tag.grey{
+      background:rgba(148,163,184,0.14);
+      color:var(--grey-2);
+      border:1px solid rgba(148,163,184,0.2);
     }
 
     .footer{
@@ -352,127 +314,75 @@
       font-size:0.94rem;
     }
 
-    .notice{
-      margin-top:18px;
-      border-left:4px solid var(--red);
-      background:rgba(255,74,74,0.08);
-      padding:14px 16px;
-      border-radius:12px;
-      color:#ffd7d7;
-      display:none;
-    }
-
-    .notice.show{
-      display:block;
-      animation:fadeIn .25s ease;
-    }
-
-    @keyframes fadeIn{
-      from{opacity:0;transform:translateY(6px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
     @media (max-width: 1080px){
-      .hero{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr 1fr}
     }
 
-    @media (max-width: 760px){
-      .topbar-inner{
-        grid-template-columns:1fr;
-        padding:14px 16px;
+    @media (max-width: 900px){
+      .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
       }
 
-      .left-buttons,
-      .brand,
-      .status-pill{
-        justify-self:center;
+      .wrap{
+        margin-left:0;
       }
 
-      .hero-content{padding:24px}
-      .stats{grid-template-columns:1fr 1fr}
-      .grid{grid-template-columns:1fr}
+      .top-status{
+        justify-content:flex-start;
+      }
     }
 
-    @media (max-width: 520px){
-      .left-buttons{
-        justify-content:center;
-      }
-
-      .nav-btn{
-        width:100%;
-      }
-
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      .status-pill{
-        min-width:unset;
-      }
+    @media (max-width: 760px){
+      .hero-content{padding:24px}
+      .grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="left-buttons">
-        <button class="nav-btn" data-section="home">Home</button>
-        <button class="nav-btn" data-section="community">Community</button>
-        <button class="nav-btn" data-section="departments">Departments</button>
-        <button class="nav-btn red" data-section="apply">Apply</button>
-      </div>
+  <div class="sidebar">
+    <h2>New Start RP</h2>
+    <p class="sidebar-tag">Not so serious roleplay. Fun community. Giving you a second chance on your story.</p>
 
-      <div class="brand">
-        <h1>New Start RP</h1>
-        <p>Serious roleplay. Strong community. Fresh stories.</p>
-      </div>
+    <button class="nav-btn" data-section="home">Home</button>
+    <button class="nav-btn" data-section="community">Community</button>
+    <button class="nav-btn" data-section="departments">Departments</button>
+    <button class="nav-btn" data-section="apply">Apply</button>
+  </div>
 
+  <main class="wrap">
+    <div class="top-status">
       <div class="status-pill">
         <span class="status-dot"></span>
         <span id="serverStatus">Server Online</span>
       </div>
     </div>
-  </header>
 
-  <main class="wrap">
     <section class="hero" id="home">
       <div class="hero-card">
         <div class="hero-content">
-          <div class="eyebrow">Welcome to the city</div>
-          <h2>A professional home page for your New Start RP community</h2>
+          <div class="eyebrow">Welcome to our creative projects</div>
+          <h2>We're combining our efforts to make more professional, safe, respectable, and fun game servers for DayZ and FiveM.</h2>
           <p>
-            This single-file index page is built for GitHub Pages and combines HTML,
-            CSS, and JavaScript into one clean layout. You can expand it later with
-            server info, rules, departments, applications, donations, and city lore.
+            Thank you for visiting our webpage, oh yeah! That was very nice of you!
+          </p>
+		  <p>
+            "Smother them with kindness that's out motto!"
           </p>
 
+          <div class="hero-group-title">FiveM</div>
           <div class="hero-actions">
-            <button class="cta primary" id="joinBtn">Join Community</button>
-            <button class="cta secondary" id="learnBtn">Learn More</button>
+            <a href="fivem://connect/89.117.150.60:28100" class="cta primary">🎮 Join New Start RP Server</a>
+            <a href="#" class="cta secondary" onclick="copyIP(); return false;">📋 Copy IP</a>
+            <a href="https://discord.gg/QDua4BYXhR" class="cta secondary" target="_blank" rel="noopener noreferrer">💬 Discord</a>
           </div>
 
-          <div class="notice" id="noticeBox"></div>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <div class="stats">
-          <div class="stat-box">
-            <div class="stat-label">Community Focus</div>
-            <div class="stat-value">RP</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Theme</div>
-            <div class="stat-value">Green / Red</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Page Type</div>
-            <div class="stat-value">Index</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Deploy Ready</div>
-            <div class="stat-value">Yes</div>
+          <div class="hero-group-title">DayZ</div>
+          <div class="hero-actions">
+            <a href="steam://connect/5.180.151.60:28800" class="cta primary">🎮 Join DayZ Server</a>
+            <a href="#" class="cta secondary" onclick="copyDayZIP(); return false;">📋 Copy IP</a>
+            <a href="https://discord.gg/2TRaWwefMz" class="cta secondary" target="_blank" rel="noopener noreferrer">💬 Discord</a>
           </div>
         </div>
       </div>
@@ -481,78 +391,239 @@
     <section class="grid">
       <article class="panel" id="community">
         <div class="panel-body">
-          <h3>Community Hub</h3>
+          <h3>New Start RP Fivem Mods</h3>
           <p>
-            Use this area to introduce your server, your roleplay style, and what makes
-            your community stand out from the rest.
+            Here is a list of the New Start RP mods that we are currently using.
           </p>
           <ul class="list">
-            <li><span>Whitelisted roleplay</span><span class="tag green">Active</span></li>
-            <li><span>City events and stories</span><span class="tag green">Live</span></li>
-            <li><span>Friendly staff team</span><span class="tag green">Ready</span></li>
+                  <li><span>az_trailer</span><span class="tag blue">GO!1</span></li>
+            <li><span>bench_editor</span><span class="tag blue">GO!2</span></li>
+            <li><span>bulk-selling</span><span class="tag blue">GO!3</span></li>
+			<li><span>ds-lock</span><span class="tag blue">GO!4</span></li>
+			<li><span>dw-garages</span><span class="tag blue">GO!5</span></li>
+			<li><span>illenium-appearance</span><span class="tag blue">GO!6</span></li>
+			<li><span>jb-atmrob</span><span class="tag blue">GO!7</span></li>
+			<li><span>jb-boosting</span><span class="tag blue">GO!8</span></li>
+			<li><span>jb-boosting-htr</span><span class="tag blue">GO!9</span></li>
+			<li><span>jb-boosting-spawnfix</span><span class="tag blue">GO!10</span></li>
+			<li><span>jb-boosting-tracker</span><span class="tag blue">GO!11</span></li>
+			<li><span>jb-buyer</span><span class="tag blue">GO!12</span></li>
+			<li><span>jb-doorlock</span><span class="tag blue">GO!13</span></li>
+			<li><span>jb-repairzones</span><span class="tag blue">GO!14</span></li>
+			<li><span>jb-trucking</span><span class="tag blue">GO!15</span></li>
+			<li><span>jb-vinscratch</span><span class="tag blue">GO!16</span></li>
+			<li><span>jb-weedpicking</span><span class="tag blue">GO!17</span></li>
+			<li><span>jim-trains</span><span class="tag blue">GO!18</span></li>
+			<li><span>jissuunnn-taco</span><span class="tag blue">GO!19</span></li>
+			<li><span>Jointmod</span><span class="tag blue">GO!20</span></li>
+			<li><span>Jointtoking</span><span class="tag blue">GO!21</span></li>
+			<li><span>legacyfuel</span><span class="tag blue">GO!22</span></li>
+			<li><span>lvc</span><span class="tag blue">GO!23</span></li>
+			<li><span>mechanics-clock</span><span class="tag blue">GO!24</span></li>
+			<li><span>mgc</span><span class="tag blue">GO!</span></li>
+			<li><span>mw-workcam</span><span class="tag blue">GO!25</span></li>
+			<li><span>nearest-postal</span><span class="tag blue">GO!26</span></li>
+			<li><span>newstart_encounters</span><span class="tag blue">GO!27</span></li>
+			<li><span>nitro-mission</span><span class="tag blue">GO!28</span></li>
+			<li><span>ns_handbook</span><span class="tag blue">GO!29</span></li>
+			<li><span>ns-fixvehalpha</span><span class="tag blue">GO!30</span></li>
+			<li><span>oulsen_satmap</span><span class="tag blue">GO!31</span></li>
+			<li><span>pdm-shop</span><span class="tag blue">GO!32</span></li>
+			<li><span>player_logbook</span><span class="tag blue">GO!33</span></li>
+			<li><span>pma-voice</span><span class="tag blue">GO!34</span></li>
+			<li><span>ps-adminmenu</span><span class="tag blue">GO!35</span></li>
+			<li><span>ps-dispatch</span><span class="tag blue">GO!36</span></li>
+			<li><span>ps-housing</span><span class="tag blue">GO!37</span></li>
+			<li><span>ps-mdt</span><span class="tag blue">GO!38</span></li>
+			<li><span>ps-realtor-0.0.5</span><span class="tag blue">GO!39</span></li>
+			<li><span>qb-airdrops</span><span class="tag blue">GO!40</span></li>
+			<li><span>qb-ammunationrobbery</span><span class="tag blue">GO!41</span></li>
+			<li><span>qb-anticheat</span><span class="tag blue">GO!42</span></li>
+			<li><span>qb-antistall</span><span class="tag blue">GO!43</span></li>
+			<li><span>qb-apartments</span><span class="tag blue">GO!44</span></li>
+			<li><span>qb-autobennys</span><span class="tag blue">GO!45</span></li>
+			<li><span>qb-badge</span><span class="tag blue">GO!46</span></li>
+			<li><span>qb-banking</span><span class="tag blue">GO!47</span></li>
+			<li><span>qb-bankrobbery</span><span class="tag blue">GO!48</span></li>
+			<li><span>qb-bennys</span><span class="tag blue">GO!49</span></li>
+			<li><span>qb-blackmarket</span><span class="tag blue">GO!50</span></li>
+			<li><span>qb-bountyhunter</span><span class="tag blue">GO!51</span></li>
+			<li><span>qb-busjob</span><span class="tag blue">GO!52</span></li>
+			<li><span>qb-cachemod</span><span class="tag blue">GO!53</span></li>
+			<li><span>qb-carboosting</span><span class="tag blue">GO!54</span></li>
+			<li><span>qb-cashped</span><span class="tag blue">GO!55</span></li>
+			<li><span>qb-catcafe</span><span class="tag blue">GO!56</span></li>
+			<li><span>qb-cornerselling</span><span class="tag blue">GO!57</span></li>
+			<li><span>qb-cryptoexchange</span><span class="tag blue">GO!58</span></li>
+			<li><span>qb-customs</span><span class="tag blue">GO!59</span></li>
+			<li><span>qb-dicegame</span><span class="tag blue">GO!60</span></li>
+			<li><span>qb-diving</span><span class="tag blue">GO!61</span></li>
+			<li><span>qb-djbooth</span><span class="tag blue">GO!62</span></li>
+			<li><span>qb-doorlock</span><span class="tag blue">GO!63</span></li>
+			<li><span>qb-drawtext</span><span class="tag blue">GO!64</span></li>
+			<li><span>qb-drugmission</span><span class="tag blue">GO!65</span></li>
+			<li><span>qb-drugraid</span><span class="tag blue">GO!66</span></li>
+			<li><span>qb-firefighterjob</span><span class="tag blue">GO!67</span></li>
+			<li><span>qb-fuel</span><span class="tag blue">GO!68</span></li>
+			<li><span>qb-garbagejob</span><span class="tag blue">GO!69</span></li>
+			<li><span>qb-gpsveh</span><span class="tag blue">GO!70</span></li>
+			<li><span>qb-graverobbery</span><span class="tag blue">GO!71</span></li>
+			<li><span>qb-hints</span><span class="tag blue">GO!72</span></li>
+			<li><span>qb-hotdogjob</span><span class="tag blue">GO!73</span></li>
+			<li><span>qb-houses</span><span class="tag blue">GO!74</span></li>
+			<li><span>qb-hud</span><span class="tag blue">GO!75</span></li>
+			<li><span>qb-hunting</span><span class="tag blue">GO!76</span></li>
+			<li><span>qb-input</span><span class="tag blue">GO!77</span></li>
+			<li><span>qb-interior</span><span class="tag blue">GO!78</span></li>
+			<li><span>qb-itemplacer</span><span class="tag blue">GO!79</span></li>
+			<li><span>qb-leathers-egghunt</span><span class="tag blue">GO!80</span></li>
+			<li><span>qb-Lenzh_chopshop-lenzh-V2</span><span class="tag blue">GO!81</span></li>
+			<li><span>qb-lock</span><span class="tag blue">GO!82</span></li>
+			<li><span>qb-lockpick</span><span class="tag blue">GO!83</span></li>
+			<li><span>qb-lootprops</span><span class="tag blue">GO!84</span></li>
+			<li><span>qb-lottery</span><span class="tag blue">GO!85</span></li>
+			<li><span>qb-management</span><span class="tag blue">GO!86</span></li>
+			<li><span>qb-mastercrafter</span><span class="tag blue">GO!87</span></li>
+			<li><span>qb-matraid</span><span class="tag blue">GO!88</span></li>
+			<li><span>qb-menu</span><span class="tag blue">GO!89</span></li>
+			<li><span>qb-methrun</span><span class="tag blue">GO!90</span></li>
+			<li><span>qb-minigames</span><span class="tag blue">GO!91</span></li>
+			<li><span>qb-mining</span><span class="tag blue">GO!92</span></li>
+			<li><span>qb-moneywash</span><span class="tag blue">GO!93</span></li>
+			<li><span>qb-moneywashped</span><span class="tag blue">GO!94</span></li>
+			<li><span>qb-moneywash-pro</span><span class="tag blue">GO!95</span></li>
+			<li><span>qb-moneywash-pro_ledger_addon</span><span class="tag blue">GO!96</span></li>
+			<li><span>qb-mugshot</span><span class="tag blue">GO!97</span></li>
+			<li><span>qb-multirandomitems</span><span class="tag blue">GO!98</span></li>
+			<li><span>qb-nightvision</span><span class="tag blue">GO!99</span></li>
+			<li><span>qb-notify</span><span class="tag blue">GO!100</span></li>
+			<li><span>qb-numberguess</span><span class="tag blue">GO!101</span></li>
+			<li><span>qb-pboat</span><span class="tag blue">GO!102</span></li>
+			<li><span>qb-phone</span><span class="tag blue">GO!103</span></li>
+			<li><span>qb-prisonrental</span><span class="tag blue">GO!104</span></li>
+			<li><span>qb-radialmenu</span><span class="tag blue">GO!105</span></li>
+			<li><span>qb-randomitems</span><span class="tag blue">GO!106</span></li>
+			<li><span>qb-randomkindness</span><span class="tag blue">GO!107</span></li>
+			<li><span>qb-recyclejob</span><span class="tag blue">GO!108</span></li>
+			<li><span>qb-regularbennys</span><span class="tag blue">GO!109</span></li>
+			<li><span>qb-restaurant-menu</span><span class="tag blue">GO!110</span></li>
+			<li><span>qb-resyncfix</span><span class="tag blue">GO!111</span></li>
+			<li><span>qb-richpresence</span><span class="tag blue">GO!112</span></li>
+			<li><span>qb-secretstash</span><span class="tag blue">GO!113</span></li>
+			<li><span>qb-serverquiz</span><span class="tag blue">GO!114</span></li>
+			<li><span>qb-shops</span><span class="tag blue">GO!115</span></li>
+			<li><span>qb-shopui</span><span class="tag blue">GO!116</span></li>
+			<li><span>qb-signrob</span><span class="tag blue">GO!117</span></li>
+			<li><span>qb-simplemission</span><span class="tag blue">GO!118</span></li>
+			<li><span>qb-sit</span><span class="tag blue">GO!119</span></li>
+			<li><span>qb-spawn</span><span class="tag blue">GO!120</span></li>
+			<li><span>qb-spawn-menu</span><span class="tag blue">GO!121</span></li>
+			<li><span>qb-specialtycrafting</span><span class="tag blue">GO!122</span></li>
+			<li><span>qb-speedradar</span><span class="tag blue">GO!123</span></li>
+			<li><span>qb-storerobbery</span><span class="tag blue">GO!124</span></li>
+			<li><span>qb-taxijob</span><span class="tag blue">GO!125</span></li>
+			<li><span>qb-teleport</span><span class="tag blue">GO!126</span></li>
+			<li><span>qb-tow</span><span class="tag blue">GO!127</span></li>
+			<li><span>qb-towjob</span><span class="tag blue">GO!128</span></li>
+			<li><span>qb-turfwars-simple</span><span class="tag blue">GO!129</span></li>
+			<li><span>qb-vehiclefailure</span><span class="tag blue">GO!130</span></li>
+			<li><span>qb-vehiclekeys</span><span class="tag blue">GO!131</span></li>
+			<li><span>qb-vehicleradar</span><span class="tag blue">GO!132</span></li>
+			<li><span>qb-vehiclesales</span><span class="tag blue">GO!133</span></li>
+			<li><span>qb-vehicleshop</span><span class="tag blue">GO!134</span></li>
+			<li><span>qb-weapons</span><span class="tag blue">GO!135</span></li>
+			<li><span>qb-weed</span><span class="tag blue">GO!</span></li>
+			<li><span>qb-whitewidow</span><span class="tag blue">GO!136</span></li>
+			<li><span>ragdoll_money</span><span class="tag blue">GO!137</span></li>
+			<li><span>raid</span><span class="tag blue">GO!138</span></li>
+			<li><span>randol_grandma</span><span class="tag blue">GO!139</span></li>
+			<li><span>random_bounty</span><span class="tag blue">GO!140</span></li>
+			<li><span>random_events</span><span class="tag blue">GO!141</span></li>
+			<li><span>random_npc_attack</span><span class="tag blue">GO!142</span></li>
+			<li><span>respawn_command</span><span class="tag blue">GO!143</span></li>
+			<li><span>robust-crafting</span><span class="tag blue">GO!144</span></li>
+			<li><span>safe_npc_driving</span><span class="tag blue">GO!145</span></li>
+			<li><span>salvage-diving-job</span><span class="tag blue">GO!146</span></li>
+			<li><span>scratch_lottery</span><span class="tag blue">GO!147</span></li>
+			<li><span>stick-main</span><span class="tag blue">GO!148</span></li>
+			<li><span>tnj-lightbar</span><span class="tag blue">GO!149</span></li>
+			<li><span>vehicle_combo</span><span class="tag blue">GO!150</span></li>
+			<li><span>vehicleforcecam</span><span class="tag blue">GO!151</span></li>
+			<li><span>wasabi_ambulance</span><span class="tag blue">GO!152</span></li>
+			<li><span>wasabi_bridge</span><span class="tag blue">GO!153</span></li>
+			<li><span>wasabi_multichar</span><span class="tag blue">GO!154</span></li>
+			<li><span>wasabi_police</span><span class="tag blue">GO!155</span></li>
+			<li><span>wasabi_spawn</span><span class="tag blue">GO!156</span></li>
+			<li><span>world-optimizer-v2</span><span class="tag blue">GO!157</span></li>
+			<li><span>zerio-radio</span><span class="tag blue">GO!158</span></li>
+			<li><span>Plus More</span><span class="tag blue">GO!</span></li>
+			
+			
           </ul>
         </div>
       </article>
 
-      <article class="panel" id="departments">
+      <article class="panel" id="Jobs">
         <div class="panel-body">
-          <h3>Departments</h3>
+          <h3>Zero Survival Dayz Server Mods</h3>
           <p>
-            Highlight your police, EMS, fire, DOJ, civilian life, businesses, gangs,
-            or other server paths here.
+            Here is a list of the Zero Survival mods that we are currently using.
           </p>
           <ul class="list">
-            <li><span>Police Department</span><span class="tag red">Hiring</span></li>
-            <li><span>EMS / Fire Rescue</span><span class="tag green">Open</span></li>
-            <li><span>Civilian Operations</span><span class="tag green">Growing</span></li>
+            <li><span>A-6_Secure_Containers</span><span class="tag blue">GO!1</span></li>
+            <li><span>Advanced_Weapon_Scopes</span><span class="tag blue">GO!2</span></li>
+            <li><span>BetterSmalleritems_2.0</span><span class="tag blue">GO!3</span></li>
+			<li><span>CannabisPlus</span><span class="tag blue">GO!4</span></li>
+			<li><span>CF</span><span class="tag blue">GO!5</span></li>
+			<li><span>Dabs_Framework</span><span class="tag blue">GO!6</span></li>
+			<li><span>DayZ_Editor_Loader</span><span class="tag blue">GO!7</span></li>
+			<li><span>DayZ-Expansion-AI</span><span class="tag blue">GO!8</span></li>
+			<li><span>DayZ-Expansion-Core</span><span class="tag blue">GO!9</span></li>
+			<li><span>DayZ-Expansion-Market</span><span class="tag blue">GO!10</span></li>
+			<li><span>DayZ-Expansion-Personal-Storage</span><span class="tag blue">GO!11</span></li>
+			<li><span>DayZ-Expansion-Quests</span><span class="tag blue">GO!12</span></li>
+			<li><span>DNA_Keycards</span><span class="tag blue">GO!13</span></li>
+			<li><span>Ghillie_Slots</span><span class="tag blue">GO!14</span></li>
+			<li><span>MasssManyItemOverhaul</span><span class="tag blue">GO!15</span></li>
+			<li><span>Megaloot_DNA_Wallet</span><span class="tag blue">GO!16</span></li>
+			<li><span>NomNomCollectibles</span><span class="tag blue">GO!17</span></li>
+			<li><span>SNAFU_Weapons</span><span class="tag blue">GO!18</span></li>
+			<li><span>Tarkov_collection_FIX</span><span class="tag blue">GO!19</span></li>
+			<li><span>Tarkov_Teleport_System_2.0</span><span class="tag blue">GO!20</span></li>
+			<li><span>VPPAdminTools</span><span class="tag blue">GO!21</span></li>
+			<li><span>ZeroSurvivalModPack(Lbmaster)</span><span class="tag blue">GO! Mod Pack</span></li>
+			<li><span>21 mods and 1 mod pack with 6 more mods, Earplugs, Virtual Garage, Groups system, Banking/Atm System, Hoverloot, Sleeping Bags, Spawn system</span><span class="tag blue">GO!</span></li>
+			
           </ul>
         </div>
       </article>
 
       <article class="panel" id="apply">
         <div class="panel-body">
-          <h3>Applications & Updates</h3>
+          <h3>Darkspire Card Game</h3>
           <p>
-            Add your application links, Discord invite, rules page, or announcements
-            in this section.
+            A supernatural realm with a humorous twist.(side project)
           </p>
           <ul class="list">
-            <li><span>Staff Applications</span><span class="tag red">Reviewing</span></li>
-            <li><span>Department Apps</span><span class="tag green">Available</span></li>
-            <li><span>Website Expansion</span><span class="tag green">Planned</span></li>
+            <li><span>Custom Cards</span><span class="tag grey">Making them</span></li>
+            <li><span>Deck Building</span><span class="tag blue">Built</span></li>
+            <li><span>Multiplayer</span><span class="tag blue">Planned</span></li>
+			
           </ul>
         </div>
       </article>
     </section>
 
     <div class="footer">
-      © <span id="year"></span> New Start RP. All rights reserved.
+      <span id="year"></span> New Start RP by Johnyballz
     </div>
   </main>
 
   <script>
-    const noticeBox = document.getElementById('noticeBox');
     const serverStatus = document.getElementById('serverStatus');
     const year = document.getElementById('year');
 
     year.textContent = new Date().getFullYear();
-
-    function showNotice(message) {
-      noticeBox.textContent = message;
-      noticeBox.classList.add('show');
-      clearTimeout(showNotice._timer);
-      showNotice._timer = setTimeout(() => {
-        noticeBox.classList.remove('show');
-      }, 2600);
-    }
-
-    document.getElementById('joinBtn').addEventListener('click', () => {
-      showNotice('You can connect this button to Discord, forums, or applications.');
-    });
-
-    document.getElementById('learnBtn').addEventListener('click', () => {
-      document.getElementById('community').scrollIntoView({ behavior: 'smooth' });
-    });
 
     document.querySelectorAll('.nav-btn').forEach(button => {
       button.addEventListener('click', () => {
@@ -575,6 +646,16 @@
       statusIndex = (statusIndex + 1) % statuses.length;
       serverStatus.textContent = statuses[statusIndex];
     }, 3500);
+
+    function copyIP() {
+      navigator.clipboard.writeText('89.117.150.60:28100');
+      alert('FiveM server IP copied!');
+    }
+
+    function copyDayZIP() {
+      navigator.clipboard.writeText('5.180.151.60:28800');
+      alert('DayZ server IP copied!');
+    }
   </script>
 </body>
 </html>
