@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DayZ Expansion Personal Storage Guide</title>
+  <style>
+    :root{
+      --bg:#08111f;--bg2:#0d1728;--panel:rgba(13,23,40,.82);--panel2:rgba(18,31,54,.92);--text:#ebf3ff;--muted:#a9bdd8;
+      --line:rgba(106,173,255,.18);--line2:rgba(0,210,255,.28);--cyan:#00d2ff;--blue:#67a8ff;--green:#41d39c;--gold:#f5c86a;
+      --shadow:0 20px 50px rgba(0,0,0,.35);--radius:24px;--max:1400px;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);background:
+      radial-gradient(circle at top left, rgba(0,210,255,.12), transparent 26%),
+      radial-gradient(circle at top right, rgba(103,168,255,.12), transparent 24%),
+      linear-gradient(180deg,#050b15 0%,#09111e 40%,#0d1728 100%);
+      line-height:1.65}
+    a{text-decoration:none;color:inherit}
+    .site{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+    .sidebar{position:sticky;top:0;height:100vh;padding:22px 16px;border-right:1px solid var(--line2);background:linear-gradient(180deg,rgba(7,12,21,.98),rgba(10,16,28,.96));overflow:auto}
+    .brand,.note,.card,.hero,.code,.tip,.table-wrap,.footer-card,.stat{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .brand,.note,.card,.code,.tip,.footer-card,.table-wrap{padding:18px}
+    .brand{margin-bottom:14px;text-align:center}.brand h2{margin:0;font-size:1.1rem;letter-spacing:.08em}.brand p{margin:.35rem 0 0;color:var(--muted);font-size:.9rem}
+    .nav{display:grid;gap:10px}.nav a{padding:13px 14px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(103,168,255,.18);font-weight:800;letter-spacing:.04em;transition:.2s}
+    .nav a:hover,.nav a.active{background:rgba(0,210,255,.12);border-color:rgba(0,210,255,.42);transform:translateX(4px)}
+    .note{margin-top:14px}.note p{margin:0;color:var(--muted);font-size:.92rem}
+    .main{min-width:0}.topbar{position:sticky;top:0;z-index:50;background:rgba(6,10,18,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:0 auto}.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;flex-wrap:wrap}
+    .topcopy h1{margin:0;font-size:1rem;letter-spacing:.12em}.topcopy p{margin:.2rem 0 0;color:var(--muted);font-size:.92rem}
+    .btns{display:flex;gap:10px;flex-wrap:wrap}.btn,.ghost{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;font-weight:800;cursor:pointer;border:0}
+    .btn{background:linear-gradient(135deg,var(--cyan),var(--green));color:#041019}.ghost{background:rgba(255,255,255,.04);color:var(--text);border:1px solid rgba(255,255,255,.08)}
+    .hero{padding:34px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;background:radial-gradient(circle, rgba(0,210,255,.18), transparent 70%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:24px 0}.eyebrow{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid rgba(103,168,255,.26);background:rgba(103,168,255,.08);color:#cfe4ff;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .hero h2{margin:14px 0 10px;font-size:clamp(2rem,4vw,3.8rem);line-height:1.03;letter-spacing:-.04em}.hero p{margin:0;color:var(--muted);font-size:1.02rem}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.stat{padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.06)}.stat strong{display:block}.stat span{color:var(--muted);font-size:.92rem}
+    section{padding:8px 0 26px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:16px}.section-head h3{margin:0;font-size:clamp(1.45rem,3vw,2.1rem)}.section-head p{margin:.35rem 0 0;color:var(--muted);max-width:840px}
+    .grid-2,.grid-3{display:grid;gap:18px}.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}
+    .card h4,.code h4,.tip h4,.table-wrap h4{margin:0 0 10px;font-size:1.08rem}.card p,.tip p,.card li{color:var(--muted)}
+    ul.clean{margin:0;padding-left:18px}.clean li{margin:.45rem 0}
+    pre{margin:0;white-space:pre-wrap;word-break:break-word;background:#06101a;border:1px solid rgba(0,210,255,.16);border-radius:18px;padding:16px;color:#dff3ff;font-size:.92rem;overflow:auto}
+    code.inline{background:rgba(255,255,255,.06);padding:2px 8px;border-radius:8px}
+    .tip{border-color:rgba(245,200,106,.22);background:linear-gradient(180deg,rgba(40,30,12,.92),rgba(59,42,16,.92))}
+    table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{padding:12px 10px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.08)}th{color:#dff3ff}td{color:var(--muted)}
+    details{border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.03);padding:14px 16px}details+details{margin-top:12px}summary{cursor:pointer;font-weight:800}
+    .footer{padding:10px 0 50px}.footer-card{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.footer-card p{margin:0;color:var(--muted)}
+    #top{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:999px;border:0;display:none;background:linear-gradient(135deg,var(--cyan),var(--green));color:#041019;font-size:1.15rem;font-weight:900;box-shadow:var(--shadow);cursor:pointer}
+    .light{--bg:#eef6ff;--bg2:#dfeafb;--panel:rgba(255,255,255,.94);--panel2:rgba(247,251,255,.98);--text:#102133;--muted:#50627a;--line:rgba(70,100,150,.12);--line2:rgba(0,140,220,.2);background:linear-gradient(180deg,#f7fbff 0%,#eaf2ff 100%)}
+    .light body{background:none}
+    @media (max-width:1100px){.hero-grid,.grid-2,.grid-3{grid-template-columns:1fr}}
+    @media (max-width:860px){.site{grid-template-columns:1fr}.sidebar{display:none}}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>PERSONAL STORAGE</h2>
+        <p>DayZ Expansion setup guide</p>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="#overview">Overview</a>
+        <a href="#object-map">Object Placement</a>
+        <a href="#storage-config">Storage Config</a>
+        <a href="#settings">Settings File</a>
+        <a href="#categories">Menu Categories</a>
+        <a href="#workflow">Setup Workflow</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#reference">Full Reference</a>
+      </nav>
+      <div class="note">
+        <p><strong style="color:var(--text);display:block;margin-bottom:6px">Included</strong>This page keeps all of the source information, but restructures it into a cleaner, easier-to-follow guide with formatted JSON and a proper reference section.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="wrap">
+          <div class="topcopy">
+            <h1>DAYZ EXPANSION PERSONAL STORAGE GUIDE</h1>
+            <p>Placement, config, settings, categories, and full JSON reference</p>
+          </div>
+          <div class="btns">
+            <a class="btn" href="personal_storage_guide.html" download>⬇ Download HTML</a>
+            <button class="ghost" id="theme">☀️ Light Mode</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <section id="overview">
+          <div class="hero-grid">
+            <div class="hero">
+              <span class="eyebrow">Guide Overview</span>
+              <h2>DayZ Expansion Personal Storage Setup</h2>
+              <p>This guide walks through the three main parts of a working personal storage setup: the placed world object, the storage definition file, and the Expansion settings file that controls behavior such as item limits, excluded classes, and menu categories. The long raw text has been cleaned up and fully preserved here in a more readable format.</p>
+            </div>
+            <div class="stats">
+              <div class="stat"><strong>Object Class</strong><span>ExpansionPersonalStorageChest</span></div>
+              <div class="stat"><strong>Storage ID</strong><span>1</span></div>
+              <div class="stat"><strong>Max Items</strong><span>35</span></div>
+              <div class="stat"><strong>Global Storage</strong><span>Disabled</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="object-map">
+          <div class="section-head"><div><h3>1. World Object Placement</h3><p>The storage chest first needs to exist in the world as an Expansion object placed in your mission objects file.</p></div></div>
+          <div class="grid-2">
+            <article class="card">
+              <h4>File path</h4>
+              <pre>/mpmissions/dayzOffline.chernarusplus/expansion/objects</pre>
+              <p>The object entry places <code class="inline">ExpansionPersonalStorageChest</code> in the world at a specific position, orientation, and scale.</p>
+            </article>
+            <article class="code">
+              <h4>Object JSON</h4>
+              <pre>{
+    "Objects": [
+        {
+            "name": "ExpansionPersonalStorageChest",
+            "pos": [
+                1397.7984619140626,
+                23.20303726196289,
+                578.3357543945313
+            ],
+            "ypr": [
+                70.20000457763672,
+                0.0,
+                -0.0
+            ],
+            "scale": 0.9999998807907105,
+            "enableCEPersistency": 0,
+            "customString": ""
+        }
+    ]
+}</pre>
+            </article>
+          </div>
+          <div class="grid-3" style="margin-top:18px">
+            <article class="card"><h4>name</h4><p>The class of the placed world object. Here it is the personal storage chest.</p></article>
+            <article class="card"><h4>pos / ypr</h4><p>The exact world coordinates and facing direction of the chest.</p></article>
+            <article class="card"><h4>enableCEPersistency</h4><p>Set to <code class="inline">0</code> here. This keeps the object definition simple and controlled by the Expansion setup.</p></article>
+          </div>
+        </section>
+
+        <section id="storage-config">
+          <div class="section-head"><div><h3>2. Personal Storage Definition</h3><p>This file tells Expansion what the placed storage object is, what it should be called in the UI, where it is located, and whether it is personal or global.</p></div></div>
+          <div class="grid-2">
+            <article class="card">
+              <h4>File path</h4>
+              <pre>/mpmissions/dayzOffline.chernarusplus/expansion/personalstorage</pre>
+              <ul class="clean">
+                <li><strong>StorageID</strong> should be unique for each storage config.</li>
+                <li><strong>ClassName</strong> should match the placed object class.</li>
+                <li><strong>Position</strong> and <strong>Orientation</strong> should match the placed object so the config lines up with the actual chest in world.</li>
+                <li><strong>IsGlobalStorage</strong> set to <code class="inline">0</code> means personal storage, not shared global storage.</li>
+              </ul>
+            </article>
+            <article class="code">
+              <h4>Storage JSON</h4>
+              <pre>{
+    "ConfigVersion": 2,
+    "StorageID": 1,
+    "ClassName": "ExpansionPersonalStorageChest",
+    "DisplayName": "Personal Storage",
+    "DisplayIcon": "Backpack",
+    "Position": [
+        1397.7984619140626,
+        23.20303726196289,
+        578.3357543945313
+    ],
+    "Orientation": [
+        70.20000457763672,
+        0.0,
+        -0.0
+    ],
+    "QuestID": -1,
+    "Faction": "",
+    "IsGlobalStorage": 0
+}</pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="settings">
+          <div class="section-head"><div><h3>3. Expansion Settings File</h3><p>This settings file enables personal storage, defines the per-storage item limit, blocks specific classes, and builds the storage menu category structure players see.</p></div></div>
+          <div class="grid-3">
+            <article class="card"><h4>Enabled</h4><p><code class="inline">1</code> means the personal storage system is turned on.</p></article>
+            <article class="card"><h4>UsePersonalStorageCase</h4><p><code class="inline">1</code> means the feature uses the personal storage case/chest behavior.</p></article>
+            <article class="card"><h4>MaxItemsPerStorage</h4><p><code class="inline">35</code> limits how many items can be stored in each personal storage.</p></article>
+          </div>
+          <div class="tip" style="margin-top:18px">
+            <h4>Excluded class names</h4>
+            <p>The raw file excludes <code class="inline">SurvivorBase</code> and <code class="inline">ExpansionMoneyBase</code>, which prevents those classes from being stored.</p>
+          </div>
+          <div class="code" style="margin-top:18px">
+            <h4>Top of the settings JSON</h4>
+            <pre>{
+    "m_Version": 1,
+    "Enabled": 1,
+    "UsePersonalStorageCase": 1,
+    "MaxItemsPerStorage": 35,
+    "ExcludedClassNames": [
+        "SurvivorBase",
+        "ExpansionMoneyBase"
+    ],
+    "MenuCategories": [
+        ...
+    ]
+}</pre>
+          </div>
+        </section>
+
+        <section id="categories">
+          <div class="section-head"><div><h3>4. Menu Categories and Subcategories</h3><p>The uploaded settings file contains a full category tree. Below is a formatted overview, followed by the uncut full JSON reference.</p></div></div>
+          <div class="table-wrap">
+            <h4>Top-level categories</h4>
+            <table>
+              <thead><tr><th>Category</th><th>Icon</th><th>Main Included Classes</th><th>Subcategories</th></tr></thead>
+              <tbody>
+                <tr><td>Ammo</td><td>set:dayz_inventory image:bullets</td><td>Ammunition_Base, Box_Base</td><td>Ammo-Boxes, Ammo-Bullets</td></tr>
+                <tr><td>Containers</td><td>set:dayz_inventory image:barrel</td><td>Container_Base</td><td>None</td></tr>
+                <tr><td>Consumables</td><td>set:dayz_inventory image:food</td><td>Edible_Base</td><td>Drinks, Fish, Food, Meat, Meds, Vegetables</td></tr>
+                <tr><td>Equipment</td><td>set:dayz_inventory image:body</td><td>ClothingBase, Clothing_Base</td><td>Armbands, Backpacks, Belts, Blouses & Suits, Boots & Shoes, Caps, Coats & Jackets, Eyewear, Ghillies, Gloves, Hats & Hoods, Helmets, Masks, Pants, Shirts, Skirts & Dresses, Sweaters & Hoodies, Vests</td></tr>
+                <tr><td>Explosives</td><td>set:dayz_inventory image:explosive</td><td>ExplosivesBase, RemoteDetonator, RemoteDetonatorTrigger</td><td>None</td></tr>
+                <tr><td>Vehicles</td><td>set:dayz_inventory image:cat_vehicle_body</td><td>CarScript, BoatScript</td><td>None</td></tr>
+                <tr><td>Weapons</td><td>set:dayz_inventory image:pistol</td><td>Weapon_Base, Weapon, ButtstockBase, OpticBase, Magazine_Base</td><td>Attachments, Assault Rifles, Pistols, Rifles, Shotguns, Sniper-Rifles</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-2" style="margin-top:18px">
+            <article class="card">
+              <h4>Consumables section</h4>
+              <p>This part of the config splits edible and medical items into focused buckets like drinks, fish, food, meat, meds, and vegetables. That gives the storage UI cleaner browsing instead of one large mixed list.</p>
+            </article>
+            <article class="card">
+              <h4>Equipment section</h4>
+              <p>This is the largest category and covers most wearable gear. It is heavily broken down into clothing-specific subcategories so players can find stored items faster.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="workflow">
+          <div class="section-head"><div><h3>5. Practical Setup Workflow</h3><p>Use this order so the system comes together cleanly.</p></div></div>
+          <div class="grid-3">
+            <article class="card"><h4>Step 1</h4><p>Place the chest in <code class="inline">/expansion/objects</code> using the object JSON.</p></article>
+            <article class="card"><h4>Step 2</h4><p>Create the matching storage definition in <code class="inline">/expansion/personalstorage</code>.</p></article>
+            <article class="card"><h4>Step 3</h4><p>Enable and tune the feature in the Expansion personal storage settings file.</p></article>
+            <article class="card"><h4>Step 4</h4><p>Make sure the <code class="inline">ClassName</code>, <code class="inline">Position</code>, and <code class="inline">Orientation</code> line up between the placed object and the storage config.</p></article>
+            <article class="card"><h4>Step 5</h4><p>Adjust categories only after the base storage works, so troubleshooting stays simple.</p></article>
+            <article class="card"><h4>Step 6</h4><p>Restart and test with a few allowed item types first, then test excluded or edge-case items.</p></article>
+          </div>
+        </section>
+
+        <section id="troubleshooting">
+          <div class="section-head"><div><h3>6. Troubleshooting Checklist</h3><p>These are the most likely points of failure based on the configuration structure you uploaded.</p></div></div>
+          <div class="grid-2">
+            <article class="tip">
+              <h4>If the chest does not work in game</h4>
+              <ul class="clean">
+                <li>Check that the world object class is really <code class="inline">ExpansionPersonalStorageChest</code>.</li>
+                <li>Check that the storage config uses the same class and matching coordinates.</li>
+                <li>Check that the settings file has <code class="inline">Enabled</code> set to <code class="inline">1</code>.</li>
+                <li>Check that the storage object actually exists in the mission objects load path.</li>
+              </ul>
+            </article>
+            <article class="tip">
+              <h4>If specific items will not store</h4>
+              <ul class="clean">
+                <li>See whether the item inherits from an excluded class.</li>
+                <li>Check whether the item is missing from your intended included class groups.</li>
+                <li>Verify whether you are expecting an exact item class or a base class match.</li>
+                <li>Review category structure if the item is technically stored but hard to locate in the UI.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="reference">
+          <div class="section-head"><div><h3>7. Full Reference Section</h3><p>The original information is preserved below in formatted, full-length blocks for copy/paste use.</p></div></div>
+          <details open>
+            <summary>Full object placement reference</summary>
+            <pre>/mpmissions/dayzOffline.chernarusplus/expansion/objects
+
+{
+    "Objects": [
+        {
+            "name": "ExpansionPersonalStorageChest",
+            "pos": [
+                1397.7984619140626,
+                23.20303726196289,
+                578.3357543945313
+            ],
+            "ypr": [
+                70.20000457763672,
+                0.0,
+                -0.0
+            ],
+            "scale": 0.9999998807907105,
+            "enableCEPersistency": 0,
+            "customString": ""
+        }
+    ]
+}</pre>
+          </details>
+          <details>
+            <summary>Full personal storage definition reference</summary>
+            <pre>/mpmissions/dayzOffline.chernarusplus/expansion/personalstorage
+
+{
+    "ConfigVersion": 2,
+    "StorageID": 1,
+    "ClassName": "ExpansionPersonalStorageChest",
+    "DisplayName": "Personal Storage",
+    "DisplayIcon": "Backpack",
+    "Position": [
+         1397.7984619140626,
+         23.20303726196289,
+         578.3357543945313
+    ],
+    "Orientation": [
+        70.20000457763672,
+        0.0,
+        -0.0
+    ],
+    "QuestID": -1,
+    "Faction": "",
+    "IsGlobalStorage": 0
+}</pre>
+          </details>
+          <details>
+            <summary>Full settings reference</summary>
+            <pre>/mpmissions/dayzOffline.chernarusplus/expansion/settings
+
+{
+    "m_Version": 1,
+    "Enabled": 1,
+    "UsePersonalStorageCase": 1,
+    "MaxItemsPerStorage": 35,
+    "ExcludedClassNames": [
+        "SurvivorBase",
+        "ExpansionMoneyBase"
+    ],
+    "MenuCategories": [
+        {
+            "DisplayName": "Ammo",
+            "IconPath": "set:dayz_inventory image:bullets",
+            "Included": [
+                "Ammunition_Base",
+                "Box_Base"
+            ],
+            "Excluded": [],
+            "SubCategories": [
+                {
+                    "DisplayName": "Ammo-Boxes",
+                    "IconPath": "set:dayz_inventory image:bullets",
+                    "Included": [
+                        "Box_Base"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Ammo-Bullets",
+                    "IconPath": "set:dayz_inventory image:bullets",
+                    "Included": [
+                        "Ammunition_Base"
+                    ],
+                    "Excluded": []
+                }
+            ]
+        },
+        {
+            "DisplayName": "Containers",
+            "IconPath": "set:dayz_inventory image:barrel",
+            "Included": [
+                "Container_Base"
+            ],
+            "Excluded": [],
+            "SubCategories": []
+        },
+        {
+            "DisplayName": "Consumables",
+            "IconPath": "set:dayz_inventory image:food",
+            "Included": [
+                "Edible_Base"
+            ],
+            "Excluded": [],
+            "SubCategories": [
+                {
+                    "DisplayName": "Drinks",
+                    "IconPath": "set:dayz_inventory image:canteen",
+                    "Included": [
+                        "SodaCan_ColorBase",
+                        "WaterBottle",
+                        "Canteen",
+                        "Vodka"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Fish",
+                    "IconPath": "set:dayz_inventory image:food",
+                    "Included": [
+                        "CarpFilletMeat",
+                        "MackerelFilletMeat",
+                        "Carp",
+                        "Sardines",
+                        "Mackerel"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Food",
+                    "IconPath": "set:dayz_inventory image:food",
+                    "Included": [
+                        "Zagorky",
+                        "ZagorkyChocolate",
+                        "ZagorkyPeanuts",
+                        "PowderedMilk",
+                        "BoxCerealCrunchin",
+                        "Rice",
+                        "Marmalade",
+                        "Honey",
+                        "SaltySticks",
+                        "Crackers",
+                        "Chips",
+                        "Pajka",
+                        "Pate",
+                        "BrisketSpread",
+                        "SardinesCan",
+                        "TunaCan",
+                        "DogFoodCan",
+                        "CatFoodCan",
+                        "PorkCan",
+                        "Lunchmeat",
+                        "UnknownFoodCan",
+                        "PeachesCan",
+                        "SpaghettiCan",
+                        "BakedBeansCan",
+                        "TacticalBaconCan"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Meat",
+                    "IconPath": "set:dayz_inventory image:food",
+                    "Included": [
+                        "BearSteakMeat",
+                        "GoatSteakMeat",
+                        "BoarSteakMeat",
+                        "PigSteakMeat",
+                        "DeerSteakMeat",
+                        "WolfSteakMeat",
+                        "CowSteakMeat",
+                        "SheepSteakMeat",
+                        "ChickenBreastMeat",
+                        "RabbitLegMeat"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Meds",
+                    "IconPath": "set:dayz_inventory image:medicalbandage",
+                    "Included": [
+                        "CharcoalTablets",
+                        "DisinfectantAlcohol",
+                        "PurificationTablets",
+                        "VitaminBottle",
+                        "DisinfectantSpray",
+                        "TetracyclineAntibiotics",
+                        "PainkillerTablets",
+                        "IodineTincture"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Vegetables",
+                    "IconPath": "set:dayz_inventory image:food",
+                    "Included": [
+                        "Apple",
+                        "GreenBellPepper",
+                        "Zucchini",
+                        "Pumpkin",
+                        "SlicedPumpkin",
+                        "PotatoSeed",
+                        "Potato",
+                        "Tomato",
+                        "SambucusBerry",
+                        "CaninaBerry",
+                        "Plum",
+                        "Pear",
+                        "MushroomBase"
+                    ],
+                    "Excluded": []
+                }
+            ]
+        },
+        {
+            "DisplayName": "Equipment",
+            "IconPath": "set:dayz_inventory image:body",
+            "Included": [
+                "ClothingBase",
+                "Clothing_Base"
+            ],
+            "Excluded": [],
+            "SubCategories": [
+                {
+                    "DisplayName": "Armbands",
+                    "IconPath": "set:dayz_inventory image:armband",
+                    "Included": [
+                        "Armband_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Backpacks",
+                    "IconPath": "set:dayz_inventory image:back",
+                    "Included": [
+                        "ChildBag_ColorBase",
+                        "DryBag_ColorBase",
+                        "TaloonBag_ColorBase",
+                        "SmershBag",
+                        "AssaultBag_ColorBase",
+                        "HuntingBag",
+                        "TortillaBag",
+                        "CoyoteBag_ColorBase",
+                        "MountainBag_ColorBase",
+                        "AliceBag_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Belts",
+                    "IconPath": "set:dayz_inventory image:hips",
+                    "Included": [
+                        "CivilianBelt",
+                        "MilitaryBelt"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Blouses & Suits",
+                    "IconPath": "set:dayz_inventory image:body",
+                    "Included": [
+                        "Blouse_ColorBase",
+                        "ManSuit_ColorBase",
+                        "WomanSuit_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Boots & Shoes",
+                    "IconPath": "set:dayz_inventory image:feet",
+                    "Included": [
+                        "AthleticShoes_ColorBase",
+                        "JoggingShoes_ColorBase",
+                        "Sneakers_ColorBase",
+                        "Ballerinas_ColorBase",
+                        "DressShoes_ColorBase",
+                        "HikingBootsLow_ColorBase",
+                        "WorkingBoots_ColorBase",
+                        "HikingBoots_ColorBase",
+                        "CombatBoots_ColorBase",
+                        "JungleBoots_ColorBase",
+                        "Wellies_ColorBase",
+                        "TTSKOBoots",
+                        "MilitaryBoots_ColorBase",
+                        "NBCBootsBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Caps",
+                    "IconPath": "set:dayz_inventory image:headgear",
+                    "Included": [
+                        "BaseballCap_CMMG_Pink",
+                        "BaseballCap_CMMG_Black",
+                        "BaseballCap_ColorBase",
+                        "PrisonerCap",
+                        "PilotkaCap",
+                        "PoliceCap",
+                        "FlatCap_ColorBase",
+                        "ZmijovkaCap_ColorBase",
+                        "RadarCap_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Coats & Jackets",
+                    "IconPath": "set:dayz_inventory image:body",
+                    "Included": [
+                        "LabCoat",
+                        "TrackSuitJacket_ColorBase",
+                        "DenimJacket",
+                        "WoolCoat_ColorBase",
+                        "RidersJacket_ColorBase",
+                        "FirefighterJacket_ColorBase",
+                        "JumpsuitJacket_ColorBase",
+                        "BomberJacket_ColorBase",
+                        "QuiltedJacket_ColorBase",
+                        "PrisonUniformJacket",
+                        "PoliceJacketOrel",
+                        "PoliceJacket",
+                        "ParamedicJacket_ColorBase",
+                        "HikingJacket_ColorBase",
+                        "Raincoat_ColorBase",
+                        "TTsKOJacket_ColorBase",
+                        "BDUJacket",
+                        "HuntingJacket_ColorBase",
+                        "M65Jacket_ColorBase",
+                        "GorkaEJacket_ColorBase",
+                        "USMCJacket_ColorBase",
+                        "NBCJacketBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Eyewear",
+                    "IconPath": "set:dayz_inventory image:eyewear",
+                    "Included": [
+                        "SportGlasses_ColorBase",
+                        "ThinFramesGlasses",
+                        "ThickFramesGlasses",
+                        "DesignerGlasses",
+                        "AviatorGlasses",
+                        "TacticalGoggles",
+                        "NVGHeadstrap",
+                        "EyePatch_Improvised"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Ghillies",
+                    "IconPath": "set:dayz_inventory image:missing",
+                    "Included": [
+                        "GhillieHood_ColorBase",
+                        "GhillieBushrag_ColorBase",
+                        "GhillieTop_ColorBase",
+                        "GhillieSuit_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Gloves",
+                    "IconPath": "set:dayz_inventory image:gloves",
+                    "Included": [
+                        "SurgicalGloves_ColorBase",
+                        "WorkingGloves_ColorBase",
+                        "TacticalGloves_ColorBase",
+                        "OMNOGloves_ColorBase",
+                        "NBCGloves_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Hats & Hoods",
+                    "IconPath": "set:dayz_inventory image:headgear",
+                    "Included": [
+                        "MedicalScrubsHat_ColorBase",
+                        "CowboyHat_ColorBase",
+                        "MilitaryBeret_ColorBase",
+                        "BeanieHat_ColorBase",
+                        "Ushanka_ColorBase",
+                        "BoonieHat_ColorBase",
+                        "OfficerHat",
+                        "NBCHood"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Helmets",
+                    "IconPath": "set:dayz_inventory image:headgear",
+                    "Included": [
+                        "HelmetBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Masks",
+                    "IconPath": "set:dayz_inventory image:mask",
+                    "Included": [
+                        "SurgicalMask",
+                        "NioshFaceMask",
+                        "HockeyMask",
+                        "BalaclavaMask_ColorBase",
+                        "Balaclava3Holes_ColorBase",
+                        "WeldingMask",
+                        "GasMask",
+                        "GP5GasMask",
+                        "AirborneMask"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Pants",
+                    "IconPath": "set:dayz_inventory image:legs",
+                    "Included": [
+                        "MedicalScrubsPants_ColorBase",
+                        "TrackSuitPants_ColorBase",
+                        "PrisonUniformPants",
+                        "Breeches_ColorBase",
+                        "SlacksPants_ColorBase",
+                        "CanvasPantsMidi_ColorBase",
+                        "CanvasPants_ColorBase",
+                        "JumpsuitPants_ColorBase",
+                        "PolicePants",
+                        "ParamedicPants_ColorBase",
+                        "FirefightersPants_ColorBase",
+                        "CargoPants_ColorBase",
+                        "ShortJeans_ColorBase",
+                        "Jeans_ColorBase",
+                        "TTSKOPants",
+                        "BDUPants",
+                        "USMCPants_ColorBase",
+                        "PolicePantsOrel",
+                        "HunterPants_ColorBase",
+                        "GorkaPants_ColorBase",
+                        "NBCPantsBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Shirts",
+                    "IconPath": "set:dayz_inventory image:body",
+                    "Included": [
+                        "TShirt_ColorBase",
+                        "Shirt_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Skirts & Dresses",
+                    "IconPath": "set:dayz_inventory image:body",
+                    "Included": [
+                        "Skirt_ColorBase",
+                        "MiniDress_ColorBase",
+                        "NurseDress_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Sweaters & Hoodies",
+                    "IconPath": "set:dayz_inventory image:body",
+                    "Included": [
+                        "Sweater_ColorBase",
+                        "Hoodie_ColorBase"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Vests",
+                    "IconPath": "set:dayz_inventory image:vest",
+                    "Included": [
+                        "ReflexVest",
+                        "PoliceVest",
+                        "PressVest_ColorBase",
+                        "UKAssVest_ColorBase",
+                        "SmershVest",
+                        "HighCapacityVest_ColorBase",
+                        "PlateCarrierVest",
+                        "HuntingVest"
+                    ],
+                    "Excluded": []
+                }
+            ]
+        },
+        {
+            "DisplayName": "Explosives",
+            "IconPath": "set:dayz_inventory image:explosive",
+            "Included": [
+                "ExplosivesBase",
+                "RemoteDetonator",
+                "RemoteDetonatorTrigger",
+                "RemoteDetonatorTrigger"
+            ],
+            "Excluded": [],
+            "SubCategories": []
+        },
+        {
+            "DisplayName": "Vehicles",
+            "IconPath": "set:dayz_inventory image:cat_vehicle_body",
+            "Included": [
+                "CarScript",
+                "BoatScript"
+            ],
+            "Excluded": [],
+            "SubCategories": []
+        },
+        {
+            "DisplayName": "Weapons",
+            "IconPath": "set:dayz_inventory image:pistol",
+            "Included": [
+                "Weapon_Base",
+                "Weapon",
+                "ButtstockBase",
+                "OpticBase",
+                "Magazine_Base"
+            ],
+            "Excluded": [
+                "Ammunition_Base"
+            ],
+            "SubCategories": [
+                {
+                    "DisplayName": "Attachments",
+                    "IconPath": "set:dayz_inventory image:weaponmuzzle",
+                    "Included": [
+                        "ButtstockBase",
+                        "OpticBase",
+                        "Magazine_Base"
+                    ],
+                    "Excluded": [
+                        "Ammunition_Base"
+                    ]
+                },
+                {
+                    "DisplayName": "Assault Rifles",
+                    "IconPath": "set:dayz_inventory image:pistol",
+                    "Included": [
+                        "FAL_Base",
+                        "AKM_Base",
+                        "AK74_Base",
+                        "M4A1_Base",
+                        "M16A2_Base",
+                        "Famas_Base",
+                        "Aug_Base"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Pistols",
+                    "IconPath": "set:dayz_inventory image:pistol",
+                    "Included": [
+                        "Pistol_Base"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Rifles",
+                    "IconPath": "set:dayz_inventory image:pistol",
+                    "Included": [
+                        "Izh18_Base",
+                        "Ruger1022_Base",
+                        "Repeater_Base",
+                        "Mosin9130_Base",
+                        "CZ527_Base",
+                        "CZ550_Base",
+                        "Winchester70_Base",
+                        "SSG82_Base"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Shotguns",
+                    "IconPath": "set:dayz_inventory image:pistol",
+                    "Included": [
+                        "Izh18Shotgun_Base",
+                        "Izh43Shotgun_Base",
+                        "Mp133Shotgun_Base",
+                        "Remington12",
+                        "Saiga_Base",
+                        "SawedoffIzh18Shotgun"
+                    ],
+                    "Excluded": []
+                },
+                {
+                    "DisplayName": "Sniper-Rifles",
+                    "IconPath": "set:dayz_inventory image:pistol",
+                    "Included": [
+                        "VSS_Base",
+                        "B95_base",
+                        "SVD_Base",
+                        "Scout_Base"
+                    ],
+                    "Excluded": []
+                }
+            ]
+        }
+    ]
+}</pre>
+          </details>
+        </section>
+
+        <section class="footer">
+          <div class="footer-card">
+            <p><strong style="color:var(--text)">Personal Storage Guide</strong><br/>Formatted into a cleaner single-page reference for your DayZ Expansion setup.</p>
+            <div class="btns">
+              <a class="btn" href="#overview">Back to Top</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <button id="top">↑</button>
+  <script>
+    const themeBtn=document.getElementById('theme');
+    themeBtn.addEventListener('click',()=>{document.documentElement.classList.toggle('light');themeBtn.textContent=document.documentElement.classList.contains('light')?'🌙 Dark Mode':'☀️ Light Mode';});
+    const topBtn=document.getElementById('top');
+    addEventListener('scroll',()=>{topBtn.style.display=scrollY>260?'block':'none';
+      const links=[...document.querySelectorAll('#nav a')];
+      const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      let current=sections[0]; sections.forEach(s=>{ if(scrollY>=s.offsetTop-140) current=s; });
+      links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current.id));
+    });
+    topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+  </script>
+</body>
+</html>
