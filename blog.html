@@ -3,284 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New Start RP Blog</title>
-  <style>
-    :root{
-      --bg:#0f1115;
-      --bg-soft:#171a21;
-      --panel:#161a22;
-      --panel-2:#1d2330;
-      --line:rgba(255,255,255,0.08);
-      --text:#e8edf5;
-      --muted:#9ca8ba;
-      --accent:#7aa2ff;
-      --accent-soft:rgba(122,162,255,0.12);
-      --shadow:0 14px 30px rgba(0,0,0,0.28);
-      --radius:16px;
-      --max:1100px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#0d1014 0%, #10131a 100%);
-      color:var(--text);
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .sidebar{
-      position:fixed;
-      left:0;
-      top:0;
-      width:230px;
-      height:100vh;
-      background:linear-gradient(180deg,#11141a,#171b24);
-      border-right:1px solid var(--line);
-      padding:22px 16px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .brand{
-      margin-bottom:10px;
-      padding-bottom:16px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .brand h1{
-      margin:0;
-      font-size:1.3rem;
-      letter-spacing:.4px;
-    }
-
-    .brand p{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:.92rem;
-      line-height:1.55;
-    }
-
-    .nav-btn{
-      display:block;
-      width:100%;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,0.02);
-      color:var(--text);
-      font-weight:700;
-      transition:.2s ease;
-    }
-
-    .nav-btn:hover,
-    .nav-btn.active{
-      background:var(--accent-soft);
-      border-color:rgba(122,162,255,0.28);
-      transform:translateY(-1px);
-    }
-
-    .wrap{
-      max-width:var(--max);
-      margin-left:250px;
-      padding:28px 24px 60px;
-    }
-
-    .hero{
-      background:linear-gradient(180deg, var(--panel), var(--panel-2));
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:34px;
-      box-shadow:var(--shadow);
-      margin-bottom:24px;
-    }
-
-    .eyebrow{
-      color:var(--accent);
-      font-size:.85rem;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      font-weight:800;
-      margin-bottom:12px;
-    }
-
-    .hero h2{
-      margin:0 0 12px;
-      font-size:clamp(2rem, 4vw, 3rem);
-      line-height:1.05;
-    }
-
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.75;
-      max-width:800px;
-    }
-
-    .post-list{
-      display:grid;
-      gap:18px;
-    }
-
-    .post-card{
-      background:linear-gradient(180deg, #151922, #131821);
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:24px;
-      box-shadow:var(--shadow);
-      transition:.2s ease;
-    }
-
-    .post-card:hover{
-      transform:translateY(-2px);
-      border-color:rgba(122,162,255,0.24);
-    }
-
-    .meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:12px;
-      color:var(--muted);
-      font-size:.9rem;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid var(--line);
-    }
-
-    .post-card h3{
-      margin:0 0 10px;
-      font-size:1.35rem;
-    }
-
-    .post-card p{
-      margin:0 0 16px;
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .read-more{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:10px;
-      background:var(--accent-soft);
-      border:1px solid rgba(122,162,255,0.18);
-      color:var(--text);
-      font-weight:700;
-    }
-
-    .footer{
-      margin-top:28px;
-      color:var(--muted);
-      text-align:center;
-      font-size:.95rem;
-    }
-
-    @media (max-width: 860px){
-      .sidebar{
-        position:relative;
-        width:100%;
-        height:auto;
-        border-right:none;
-        border-bottom:1px solid var(--line);
-      }
-
-      .wrap{
-        margin-left:0;
-        padding:20px 16px 40px;
-      }
-
-      .hero{
-        padding:24px;
-      }
-    }
-  </style>
+  <title>Text</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="brand">
-      <h1>📝 New Start RP Blog Collection</h1>
-      <p>A  higher standard of truth, creativity; while avoiding dry language ✨</p>
-    </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="kicker">Text</div>
+        <h1>Text<br>Text</h1>
+        <p>Text</p>
+      </div>
 
-    <a href="index.html" class="nav-btn">🏠 Home</a>
-    <a href="community.html" class="nav-btn">🤝 Community</a>
-    <a href="blog.html" class="nav-btn active">📰 Blog</a>
-    <a href="blog-post-1.html" class="nav-btn">📄 Post One</a>
-    <a href="blog-post-2.html" class="nav-btn">📄 Post Two</a>
-    <a href="blog-post-3.html" class="nav-btn">📄 Post Three</a>
-  </aside>
+   <nav class="nav">
+        <a href="index.html" class="active"><span>Home</span><small>Home</small></a>
+        <a href="blog.html"><span>Blog</span><small>News</small></a>
+        <a href="community.html"><span>Community</span><small>Players</small></a>
+        <a href="expansion_quest_guide.html"><span>Expansion Quest Guide</span><small>Players</small></a>
+        
+      </nav>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="eyebrow">Journal • Notes • Updates ✍️</div>
-      <h2>Look Further down the road. 📚</h2>
-      <p>
-        The first goal is to extrapolate and look towards the future. The second goal do the work and do it on a regular bases. The more you get done the more you can see what to change next. Also, completing a goal helps build your confidence.💭
-      </p>
-    </section>
 
-    <section class="post-list">
-      <article class="post-card">
-        <div class="meta">
-          <span class="chip">📅 March 25, 2026</span>
-          <span class="chip">📰 Announcement</span>
-          <span class="chip">✨ Featured</span>
+      <div class="sidebar-card">
+        <h3>Text</h3>
+        <p>Text</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero community-hero">
+        <div class="hero-inner">
+          <div class="kicker">Community Hub</div>
+          <h2>Text</h2>
+          <p>Text</p>
+          <div class="cta-row">
+            <a class="btn primary" href="index.html">Return to Index</a>
+            <a class="btn secondary" href="blog.html">Read Blog</a>
+          </div>
         </div>
-        <h3>Welcome to the New Start RP Blog 🌙</h3>
-        <p>
-          Remember to make lots of sugary mistakes. Remember to be careful what you put in your brain. Remember to take the good with the bad. 🖊️
-        </p>
-        <a href="blog-post-1.html" class="read-more">Read Post 📖</a>
-      </article>
+      </section>
 
-      <article class="post-card">
-        <div class="meta">
-          <span class="chip">📅 March 24, 2026</span>
-          <span class="chip">🏙️ Community</span>
-          <span class="chip">💬 Reflection</span>
+      <section class="section grid">
+        <article class="card">
+          <div class="eyebrow">Text</div>
+          <h3>Text</h3>
+          <p>Text</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Text</div>
+          <h3>Text</h3>
+          <p>Text</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Text</div>
+          <h3>Text</h3>
+          <p>Text</p>
+        </article>
+      </section>
+
+      <section class="section split">
+        <div class="card">
+          <div class="eyebrow">Text</div>
+          <div class="list">
+            <div class="list-item">
+              <strong>Text</strong>
+              <div class="meta">Text</div>
+            </div>
+            <div class="list-item">
+              <strong>Text</strong>
+              <div class="meta">Text</div>
+            </div>
+            <div class="list-item">
+              <strong>Text</strong>
+              <div class="meta">Text</div>
+            </div>
+          </div>
         </div>
-        <h3>What Makes a Strong Roleplay Community? 🤝</h3>
-        <p>
-          It is having inside knowledge of the community. It is having history with the players and with the server. A strong Role play community sustains momentum and continues to get better over time. When you find what helps the community stay in the zone. Letting players find their own paths and make their own stories. Having those stories, evolve, adapt and intertwine with other players stories. Having inside jokes and stories is the glue that binds the community together.🌤️
-        </p>
-        <a href="blog-post-2.html" class="read-more">Read Post 📖</a>
-      </article>
-
-      <article class="post-card">
-        <div class="meta">
-          <span class="chip">📅 March 23, 2026</span>
-          <span class="chip">🛠️ Development</span>
-          <span class="chip">📌 Notes</span>
+        <div class="card">
+          <div class="eyebrow">Text</div>
+          <p>Text</p>
         </div>
-        <h3>We will not stifle our creativity or our talents🔧</h3>
-        <p>
-          There is not enough time in this life to be afraid of what could happen. While your being scared of every little thing the world is still moving forward without you.🚶
-        </p>
-        <a href="blog-post-3.html" class="read-more">Read Post 📖</a>
-      </article>
-    </section>
+      </section>
 
-    <div class="footer">
-      <span id="year"></span> New Start RP Blog • Built for clean reading 🕯️ by johnyballz
-    </div>
-  </main>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+      <div class="footer">Text</div>
+    </main>
+  </div>
 </body>
 </html>
