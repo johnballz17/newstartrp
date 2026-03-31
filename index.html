@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NovaCore Gaming | Index</title>
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .image-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+    .image-item{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      text-decoration:none;
+      color:inherit;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px;
+      transition:.25s ease;
+    }
+    .image-item:hover{
+      transform:translateY(-4px);
+      border-color:rgba(0,210,255,.45);
+    }
+    .image-item img{
+      width:100%;
+      aspect-ratio:16/10;
+      object-fit:cover;
+      border-radius:12px;
+      display:block;
+      background:#111827;
+    }
+    .image-item span{
+      font-weight:700;
+      text-align:center;
+    }
+  </style>
+
 </head>
 <body>
   <div class="layout">
@@ -24,8 +62,8 @@
       </nav>
 
       <div class="sidebar-card">
-        <h3>Text</h3>
-        <p>Text</p>
+        <h3>Welcome</h3>
+        <p>To the Github Zero Survival Website</p>
       </div>
     </aside>
 
@@ -33,8 +71,10 @@
       <section class="hero">
         <div class="hero-inner">
           <div class="kicker">Text</div>
-          <h2>Text</h2>
-          <p>Text</p>
+          <h2>Join our Server</h2>
+          <p>Zeros Survival [tarkov style][keycards][guns][personalstorage][quest]</p>
+		  <p>IP 5.180.151.60</p>
+		  <p>Port 28800</p>
           <div class="cta-row">
             <a class="btn primary" href="community.html">Visit Community</a>
             <a class="btn secondary" href="blog.html">Read Latest Blog</a>
@@ -44,17 +84,40 @@
 
       <section class="section grid">
         <article class="card">
-          <div class="eyebrow">Text</div>
-          <h3>Text</h3>
-          <p>Text</p>
+          <div class="eyebrow">Mods</div>
+          <h3>List of Mods in our Server</h3>
+		                        <ul class="mods-list">
+                                <li>A-6_Secure_Containers</li>
+                                <li>Advanced_Weapon_Scopes</li>
+                                <li>BetterSmalleritems_2.0</li>
+                                <li>CannabisPlus</li>
+                                <li>CF</li>
+                                <li>Dabs_Framework</li>
+                                <li>DayZ_Editor_Loader</li>
+                                <li>DayZ-Expansion-AI</li>
+                                <li>DayZ-Expansion-Core</li>
+                                <li>DayZ-Expansion-Market</li>
+                                <li>DayZ-Expansion-Personal-Storage</li>
+                                <li>DayZ-Expansion-Quests</li>
+                                <li>DNA_Keycards</li>
+                                <li>Ghillie_Slots</li>
+                                <li>MasssManyItemOverhaul</li>
+                                <li>Megaloot_DNA_Wallet</li>
+                                <li>NomNomCollectibles</li>
+                                <li>SNAFU_Weapons</li>
+                                <li>Tarkov_collection_FIX</li>
+                                <li>Tarkov_Teleport_System_2.0</li>
+                                <li>VPPAdminTools</li>
+                                <li>ZeroSurvivalModPack(Lbmaster)</li>
+                            </ul>
         </article>
         <article class="card">
-          <div class="eyebrow">Text</div>
-          <h3>Text</h3>
-          <p>Text</p>
+          <div class="eyebrow">Here's the deal</div>
+          <h3>Built by players</h3>
+          <p>For Players</p>
         </article>
         <article class="card">
-          <div class="eyebrow">Text</div>
+          <div class="eyebrow"></div>
           <h3>Text</h3>
           <p>Text</p>
         </article>
@@ -62,21 +125,45 @@
 
       <section class="section split">
         <div class="card">
-          <div class="eyebrow">Why it works</div>
-          <h3>Text</h3>
-          <p>Text</p>
+          <div class="eyebrow">I'm gonna break my mic production!</div>
+          <h3>F your toast</h3>
+          <p>It's a piece of crap. It's a piece of crap</p>
         </div>
         <div class="card">
-          <div class="eyebrow">Text</div>
+          <div class="eyebrow">Looky here</div>
           <div class="list">
             <div class="list-item">
-              <strong><a href="blog.html">Text</a></strong>
-              <div class="meta">Text</div>
+              <strong><a href="blog.html">Read on</a></strong>
+              <div class="meta">Read on</div>
             </div>
             <div class="list-item">
-              <strong><a href="community.html">Text</a></strong>
-              <div class="meta">Text</div>
+              <strong><a href="community.html">Read on</a></strong>
+              <div class="meta">Read on</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section">
+        <div class="card">
+          <div class="eyebrow">Gallery</div>
+          <h3>Cutstom Dayz Zones made by Zero</h3>
+          <p>Created by Zero<strong>img</strong> folder using these filenames:
+            <code>item1.png</code> through <code>item11.png</code>.
+          </p>
+          <div class="image-grid">
+            <a class="image-item" href="img/Screenshot 2026-03-22 142402.png" target="_blank"><img src="img/item1.png" alt="Item 1"><span>Item 1</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142425.png" target="_blank"><img src="img/item2.png" alt="Item 2"><span>Item 2</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142443.png" target="_blank"><img src="img/item3.png" alt="Item 3"><span>Item 3</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142520.png" target="_blank"><img src="img/item4.png" alt="Item 4"><span>Item 4</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142541.png" target="_blank"><img src="img/item5.png" alt="Item 5"><span>Item 5</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142604.png" target="_blank"><img src="img/item6.png" alt="Item 6"><span>Item 6</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142838.png" target="_blank"><img src="img/item7.png" alt="Item 7"><span>Item 7</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142849.png" target="_blank"><img src="img/item8.png" alt="Item 8"><span>Item 8</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142922.png" target="_blank"><img src="img/item9.png" alt="Item 9"><span>Item 9</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142936.png" target="_blank"><img src="img/item10.png" alt="Item 10"><span>Item 10</span></a>
+            <a class="image-item" href="img/Screenshot 2026-03-22 142946.png" target="_blank"><img src="img/item11.png" alt="Item 11"><span>Item 11</span></a>
           </div>
         </div>
       </section>
