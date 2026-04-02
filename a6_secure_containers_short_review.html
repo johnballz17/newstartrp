@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A-6 Secure Containers Review</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#121b2d;
+      --panel2:#182235;
+      --text:#e6edf8;
+      --muted:#a9b5cc;
+      --border:#2b3852;
+      --max:1000px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:linear-gradient(180deg,#07101a 0%,#0b1220 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
+    .wrap{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+    .hero,.section{padding:24px 0}
+    .hero-card,.card{
+      background:linear-gradient(180deg,var(--panel),var(--panel2));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+    }
+    .hero-grid,.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+    .grid{grid-template-columns:1fr 1fr}
+    h1{margin:0 0 10px;font-size:2.05rem}
+    h2{margin:0 0 12px;font-size:1.15rem}
+    p{margin:0 0 10px}
+    ul{margin:0;padding-left:18px}
+    li{margin:0 0 8px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px}
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:6px 10px;
+      border:1px solid #355489;
+      border-radius:999px;
+      color:#d4e5ff;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .muted{color:var(--muted)}
+    .score{
+      border:2px dashed #4a628f;
+      border-radius:14px;
+      padding:22px 12px;
+      text-align:center;
+      font-size:2rem;
+      font-weight:700;
+      margin-top:12px;
+    }
+    .footer{padding:0 0 28px}
+    .footer-card{
+      background:#0f1728;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px 18px;
+    }
+    @media (max-width:860px){
+      .hero-grid,.grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <section class="hero-card">
+          <div class="eyebrow">DayZ Mod Review</div>
+          <h1>A-6 Secure Containers</h1>
+          <p>A.I Generated Analysis Exmaple. Short review based on the provided source code.</p>
+        </section>
+        <aside class="hero-card">
+          <h2>Score</h2>
+          <div class="score">4.6/5</div>
+          <p class="muted" style="margin-top:10px">Strong utility and clear persistence logic.</p>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section">
+      <div class="grid">
+        <article class="card">
+          <h2>What It Does</h2>
+          <p>This mod adds a secure container item that attaches to a player's <code>SecureContainer</code> slot and keeps that container tied to the player's identity.</p>
+          <p>Its main purpose is to let players keep protected storage through death and reconnects.</p>
+        </article>
+
+        <article class="card">
+          <h2>How It Works</h2>
+          <p>When the container is attached, the mod saves the owner's player ID on the item. That owner ID is also saved and loaded with persistence.</p>
+          <p>On player select, the server looks through all secure containers, finds the one owned by that player, and reattaches it to the <code>SecureContainer</code> slot. If none exists, the mod can spawn a starter container instead.</p>
+          <p>On death, the container is dropped, ownership is kept, lifetime is refreshed, and it is moved away until the owner is restored.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <article class="card">
+          <h2>Key Features</h2>
+          <ul>
+            <li>Owner-based secure container system</li>
+            <li>Persistence through save/load</li>
+            <li>Automatic restore on player select</li>
+            <li>Optional starter container for new players</li>
+            <li>Container damage blocked</li>
+            <li>Nested secure containers blocked</li>
+            <li>Item allow/block list from config</li>
+            <li>Lifetime refresh on detach and death</li>
+            <li>Client receives config from server by RPC</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Improvement Areas</h2>
+          <ul>
+            <li>The death restore flow should be tested carefully, since the container is moved to an off-map position.</li>
+            <li>Inventory clearing overrides only target clothing and weapons, so compatibility with other mods should be checked.</li>
+            <li>The owner lookup scans all secure containers, which may need review on very large servers.</li>
+            <li>More admin-facing logs or debug messages would help troubleshooting.</li>
+            <li>Extra permission checks could help if other mods also use the same slot behavior.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="footer">
+  <div class="footer-card">
+
+    <strong>Summary:</strong>
+     I think this mod is awesome. Check it out if you are building a tarkov/arena type server. A butt purse is a necessity in these games.
+
+    <!-- Steam Link + Image -->
+    <div style="margin-top:20px; text-align:center;">
+
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3123910249&searchtext=secure" target="_blank" style="text-decoration:none;">
+
+        <img src="img/a6securecontainers.png" 
+             alt="Secure Containers Mod"
+             style="width:100%; max-width:500px; border-radius:12px; border:1px solid #2b3852; margin-bottom:10px;">
+
+        <div style="font-weight:700; color:#60a5fa;">
+          View on Steam Workshop
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+</section>
+  </main>
+</body>
+</html>
