@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Weapon Scopes Review</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#121b2d;
+      --panel2:#182235;
+      --text:#e6edf8;
+      --muted:#a9b5cc;
+      --border:#2b3852;
+      --max:1000px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:linear-gradient(180deg,#07101a 0%,#0b1220 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
+    .wrap{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+    .hero,.section{padding:24px 0}
+    .hero-card,.card{
+      background:linear-gradient(180deg,var(--panel),var(--panel2));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+    }
+    .hero-grid,.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+    .grid{grid-template-columns:1fr 1fr}
+    h1{margin:0 0 10px;font-size:2.05rem}
+    h2{margin:0 0 12px;font-size:1.15rem}
+    p{margin:0 0 10px}
+    ul{margin:0;padding-left:18px}
+    li{margin:0 0 8px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px}
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:6px 10px;
+      border:1px solid #355489;
+      border-radius:999px;
+      color:#d4e5ff;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .muted{color:var(--muted)}
+    .score{
+      border:2px dashed #4a628f;
+      border-radius:14px;
+      padding:22px 12px;
+      text-align:center;
+      font-size:2rem;
+      font-weight:700;
+      margin-top:12px;
+    }
+    .footer{padding:0 0 28px}
+    .footer-card{
+      background:#0f1728;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px 18px;
+    }
+    @media (max-width:860px){
+      .hero-grid,.grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<div style="position:fixed; top:20px; left:20px; z-index:999;">
+  <a href="index.html" 
+     style="
+        background:#121b2d;
+        color:#e6edf8;
+        padding:10px 16px;
+        border-radius:10px;
+        border:1px solid #2b3852;
+        text-decoration:none;
+        font-weight:600;
+     ">
+     ← Back to Home
+  </a>
+</div>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <section class="hero-card">
+          <div class="eyebrow">DayZ Mod Review</div>
+          <h1>Advanced Weapon Scopes</h1>
+          <p>A.I. Generated Example Analysis. Short review based on the provided source code.</p>
+        </section>
+        <aside class="hero-card">
+          <h2>Score</h2>
+          <div class="score">4.5/5</div>
+          <p class="muted" style="margin-top:10px">Useful feature set, but repetitive code and maintainability issues.</p>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section">
+      <div class="grid">
+        <article class="card">
+          <h2>What It Does</h2>
+          <p>This mod adds a large set of custom weapon optics, mount variants, and combo scope setups.</p>
+          <p>It also adds actions to dismount combined optics back into separate items and supports some night-vision optic behavior.</p>
+        </article>
+
+        <article class="card">
+          <h2>How It Works</h2>
+          <p>The mod registers many custom scope items with their own in-hand animation profiles so they display correctly when held.</p>
+          <p>Mounted versions such as <code>B13</code>, <code>MosinMount</code>, and combo optics use custom action scripts. When a player uses an unmount action, the mod deletes the combined item and spawns the base optic plus the mount again. If the optic used a battery, the code tries to copy the battery health and charge to the new item.</p>
+          <p>It also adjusts post-processing for the HHS optic family so it can work better with NV enabled.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <article class="card">
+          <h2>Key Features</h2>
+          <ul>
+            <li>Large list of custom optics and mount variants</li>
+            <li>Custom in-hand IK animation registration</li>
+            <li>Unmount actions for combined optics</li>
+            <li>Battery transfer for powered optics in many cases</li>
+            <li>Support for B13 and Mosin mount conversions</li>
+            <li>Special NV handling for some optics</li>
+            <li>Toggle NV check for supported PVS4 variants</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Improvement Areas</h2>
+          <ul>
+            <li>A lot of the unmount code is duplicated and could be moved into shared helper functions.</li>
+            <li>Battery transfer logic is repeated in many files and is not fully standardized.</li>
+            <li>The file name <code>DontJudgeMeForThisCodePlease.c</code> suggests temporary code that should be cleaned up.</li>
+            <li>A data-driven system would be easier to maintain than writing a separate action for so many scope variants.</li>
+            <li>All variants should be tested for mount compatibility, battery handling, and optic view behavior.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+   <section class="footer">
+  <div class="footer-card">
+
+    <strong>Summary:</strong>
+    Can't live without this mod. It is essential if you are building a modded server. These scopes are game changers. 
+
+    <!-- Steam + Image -->
+    <div style="margin-top:25px; text-align:center;">
+
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2143128974&searchtext=advanced+scopes"
+         target="_blank"
+         style="text-decoration:none;">
+
+        <img src="img/advancedweaponscopespicture"
+             alt="Advanced Weapon Scopes"
+             style="
+                width:100%;
+                max-width:520px;
+                border-radius:14px;
+                border:1px solid #2b3852;
+                margin-bottom:12px;
+             ">
+
+        <div style="
+            font-size:1rem;
+            font-weight:700;
+            color:#60a5fa;
+        ">
+          View on Steam Workshop
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+</section>
+  </main>
+</body>
+</html>
